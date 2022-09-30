@@ -1,22 +1,42 @@
 import os
-from datetime import datetime
+import logging
+import shutil
 
-year = datetime.now().strftime("%Y")
-month = datetime.now().strftime("%m-%Y")
-path1 = '/home/pi/Desktop/Birdwatcher'
-path2 = '/home/pi/Desktop/Birdwatcher/%s' %year
-path3 = '/home/pi/Desktop/Birdwatcher/%s/%s' % (year, month)
+class folder:
+    
+    
+  #  def __init__():
+        #logging.basicConfig(filename="folder_log.txt", format="%(asctime)s %(message)s")
+        #year = datetime.now().strftime("%Y")
+        #month = datetime.now().strftime("%m-%Y")
         
+            
+    def createFolder(pPath):
 
-try:
-    os.mkdir(path1)
-except OSError as error:
-    print(error)
-try:
-    os.mkdir(path2)
-except OSError as error:
-    print(error)
-try:
-    os.mkdir(path3)
-except OSError as error:
-    print(error)
+        if not os.path.exists(pPath):
+            try:
+                os.mkdir(pPath)
+            except OSError as error:
+                logging.error(error)
+
+    def delFolder(pTransfer):
+        try:
+            shutil.rmtree(pTransfer)
+        except Exception as e:
+            logging.error(e)
+                    
+            
+    def transfer (pFile, pTransfer):
+        
+        try:
+            shutil.copy(pFile, pTransfer)
+            #shutil.make_archive(pTransfer,'zip', pTransfer)
+        except Exception as e:
+            logging.error(e)
+            
+    def compress(pTransfer):
+        
+        try:
+            shutil.make_archive(pTransfer,'zip', pTransfer)
+        except Exception as e:
+            logging.error(e)
