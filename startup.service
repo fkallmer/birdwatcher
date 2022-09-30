@@ -1,0 +1,11 @@
+[Unit]
+Description=My Sample Service
+After=multi-user.target
+Requires=network.target
+
+[Service]
+Type=idle
+ExecStart=python /home/pi/Desktop/Code1/birdwatcher/process.py
+
+[Install]
+WantedBy=multi-user.target
