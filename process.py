@@ -1,7 +1,7 @@
 from datetime import datetime
 from folder import *
 from camera import *
-from mail import *
+from transfer import *
 import logging
 
 class Process():
@@ -38,7 +38,7 @@ class Process():
                 
         folder.transfer(pFile, pTransfer)
                 
-        mail.sendMail(pSubject, pFrom, pTo, pContent, pTransfer, filename, host, username, password)
+        transfer.sendMail(pSubject, pFrom, pTo, pContent, pTransfer, filename, host, username, password)
        
             
         
